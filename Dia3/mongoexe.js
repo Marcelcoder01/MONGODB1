@@ -188,16 +188,16 @@ let mark_10 = {
 //         console.error("Ha habido un error" + err);
 //         });
 
-// Teachers.aggregate(
-//     [{$project: {teacher_first_name: 1, teacher_last_name: 1, _id: 0,}}]
-//              )
-    // .then(function (resp) {
-    //     console.log("Nombre y apellidos de los profes: ");
-    //     console.log(resp);
-    //     })
-    // .catch(function (err) {
-    //     console.error("Ha habido un error" + err);
-    //     });
+Marks.aggregate([{$unwind: "$teachers"},
+    {$project: {Nombre_profes: "$teachers.teacher_first_name", Apellidos_profes: "$teachers.teacher_last_name", _id: 0,}}]
+             )
+    .then(function (resp) {
+        console.log("Nombre y apellidos de los profes: ");
+        console.log(resp);
+        })
+    .catch(function (err) {
+        console.error("Ha habido un error" + err);
+        });
 
 // Marks.aggregate(
 //     [{$group: {_id: "$group_name", total: {$sum: 1}}},{$sort: {_id: -1}}]
@@ -222,14 +222,14 @@ let mark_10 = {
 //     console.error("Ha habido un error" + err);
 //                 });
 
-Marks.aggregate([{$unwind: "$teachers"}, {$group: {_id:"$subject_name", numProf: {$sum: 1}}}])
-    .then(function (resp) {
-        console.log("Total profes por asignatura: ");
-        console.log(resp);
-                 })
-    .catch(function (err) {
-        console.error("Ha habido un error" + err);
-                });
+// Marks.aggregate([{$unwind: "$teachers"}, {$group: {_id:"$subject_name", numProf: {$sum: 1}}}])
+//     .then(function (resp) {
+//         console.log("Total profes por asignatura: ");
+//         console.log(resp);
+//                  })
+//     .catch(function (err) {
+//         console.error("Ha habido un error" + err);
+//                 });
 
 mongoose.connect('mongodb+srv://marcelcoder01:Lahabana324b6@ejemplo.bm1akvz.mongodb.net/School',
 {useNewUrlParser: false, useUnifiedTopology: false,})
