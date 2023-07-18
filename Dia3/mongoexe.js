@@ -178,7 +178,7 @@ let mark_10 = {
     //     });
 
 // Marks.aggregate(
-//     [{$project: {student_first_name: 1, student_last_name: 1, _id: 0,}}]
+//     [{$project: {student_first_name: 1, student_last_name: 1, _id: 0}}]
 //              )
 //     .then(function (resp) {
 //         console.log("Nombre y apellidos de los estudiantes: ");
@@ -200,7 +200,7 @@ let mark_10 = {
     //     });
 
 // Marks.aggregate(
-//     [{$group: { _id: "$group_name", total: {$sum: 1}}},{ $sort: {_id: -1}}]
+//     [{$group: {_id: "$group_name", total: {$sum: 1}}},{$sort: {_id: -1}}]
 //             )
 //     .then(function (resp) {
 //         console.log("Alumnos ordenador por grupo: ");
@@ -211,7 +211,7 @@ let mark_10 = {
 //                 });
 
 // Marks.aggregate(
-//     [{$group: {_id: "$subject_name", top5: {$avg: "$mark" }}}, {$match: {top5: {$gt: 5}}},
+//     [{$group: {_id: "$subject_name", top5: {$avg: "$mark"}}}, {$match: {top5: {$gt: 5}}},
 //     {$sort: {top5: 1}}]
 // )
 //     .then(function (resp) {
